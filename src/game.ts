@@ -1,4 +1,4 @@
-// game.ts
+// src/game.ts
 import {
   engine,
   Transform,
@@ -37,7 +37,7 @@ export class RacingCar {
       rotation: Quaternion.fromEulerDegrees(0, 180, 0)
     })
 
-    GltfContainer.create(entity, { src: `assets/${model}` }) // Changement ici
+    GltfContainer.create(entity, { src: `assets/scene/Models/${model}/${model}.glb` }) // Chemin corrigé
 
     PointerEvents.create(entity, {
       pointerEvents: [
@@ -133,8 +133,8 @@ function carSystem(dt: number) {
 }
 
 export function setupGame() {
-  new RacingCar(Vector3.create(6, 0.1, 2), 'models/car_red.glb')
-  new RacingCar(Vector3.create(8, 0.1, 2), 'models/car_blue.glb')
+  new RacingCar(Vector3.create(6, 0.1, 2), 'car_red') // Chemin sera assets/scene/Models/car_red/car_red.glb
+  new RacingCar(Vector3.create(8, 0.1, 2), 'car_blue') // Chemin sera assets/scene/Models/car_blue/car_blue.glb
 
   engine.addSystem(carSystem)
   engine.addSystem(clickSystem)
